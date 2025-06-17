@@ -1,2 +1,5 @@
 node_modules
 .env
+reminders.json
+# Mezon cache
+/mezon-cache
