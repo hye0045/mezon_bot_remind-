@@ -1,0 +1,15 @@
+Mục đích chính: Giúp người dùng không bỏ lỡ các công việc quan trọng, lịch học, deadline hoặc bất kỳ sự kiện nào họ muốn được nhắc nhở.
+Đối tượng người dùng: Học sinh, sinh viên, nhân viên văn phòng, hoặc bất kỳ ai cần một công cụ nhắc việc đơn giản, tích hợp ngay trên nền tảng chat Mezon họ đang sử dụng.
+Logic hoạt động:
+Nhận lệnh từ người dùng: Bot lắng nghe các tin nhắn trong kênh chat. Nếu tin nhắn bắt đầu bằng một tiền tố lệnh định sẵn (ví dụ: !), bot sẽ xử lý nó.
+Phân tích và thực thi lệnh:
+Đặt nhắc nhở (!nhacnho): Người dùng cung cấp thời gian, ngày và nội dung. Bot lưu thông tin này (bao gồm ID người dùng, ID kênh) vào một nơi lưu trữ (file JSON).
+Liệt kê nhắc nhở (!danhsach): Bot hiển thị các nhắc nhở đang chờ của người dùng trong kênh đó.
+Xóa nhắc nhở (!xoa): Người dùng cung cấp ID của nhắc nhở muốn xóa. Bot tìm và loại bỏ nó khỏi bộ nhớ và file lưu trữ.
+Quote hàng ngày (!quotehangngay): Người dùng đặt một giờ cụ thể. Bot sẽ lưu lịch này.
+Trợ giúp (!trogiup): Bot hiển thị danh sách các lệnh và cách sử dụng.
+Lưu trữ bền vững: Các nhắc nhở được ghi vào file reminders.json. Khi bot khởi động, nó sẽ đọc file này để khôi phục trạng thái.
+Kiểm tra định kỳ: Một tiến trình chạy ngầm (sử dụng setInterval) sẽ kiểm tra danh sách nhắc nhở mỗi phút:
+Nếu có nhắc nhở "một lần" đến hạn, bot sẽ gửi tin nhắn thông báo (mention người dùng) vào đúng kênh. Sau đó, nhắc nhở này sẽ bị xóa.
+Nếu đến giờ gửi "quote hàng ngày" (và chưa gửi trong ngày), bot sẽ gọi API lấy quote, gửi vào kênh và đánh dấu đã gửi cho ngày hôm đó.
+Tương tác API: Bot sử dụng API bên ngoài (api.quotable.io) để lấy các câu trích dẫn hay.
