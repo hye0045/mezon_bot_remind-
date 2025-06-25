@@ -10,8 +10,9 @@ dotenv.config();//tải các biến từ file .env vào process.env
 // --- CONFIGURATION ---
 const COMMAND_PREFIX = process.env.COMMAND_PREFIX || "!";
 const BOT_ID = process.env.BOT_ID;
-const REMINDERS_FILE_PATH = path.join(__dirname, 'reminders.json');
-
+// const REMINDERS_FILE_PATH = path.join(__dirname, 'reminders.json'); 
+const DATA_DIR = process.env.RENDER_DISK_MOUNT_PATH || __dirname; 
+const REMINDERS_FILE_PATH = path.join(DATA_DIR, 'reminders.json'); 
 // --- BOT STATE ---
 let REMINDERS = [];//mảng chứa đối tượng reminder
 let nextReminderId = 1;// biến đếm để tạo ID 
